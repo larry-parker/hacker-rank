@@ -1,14 +1,4 @@
-#!/bin/python3
-
-import math
-import os
-import random
-import re
-import sys
-
 class Score:
-    """ Stores a score as tuple t"""
-
     def __init__(self, x: int = 0, y: int = 0):
         self.x = x
         self.y = y
@@ -37,13 +27,13 @@ def compareTriplets(a, b):
         if p_a.scores[index] > p_b.scores[index]:
             return Score(1, 0)
         if p_a.scores[index] == p_b.scores[index]:
-            return Score(0, 0)
+            return Score()
         else:
             return Score(0, 1)
 
     def sum_scores(score_list):
         if not score_list:
-            return Score(0, 0)
+            return Score()
         else:
             return score_list.pop() + sum_scores(score_list)
 
@@ -53,16 +43,5 @@ def compareTriplets(a, b):
 
     return score.get_score_as_list()
 
-if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
-    a = list(map(int, input().rstrip().split()))
-
-    b = list(map(int, input().rstrip().split()))
-
-    result = compareTriplets(a, b)
-
-    fptr.write(' '.join(map(str, result)))
-    fptr.write('\n')
-
-    fptr.close()
+ct = compareTriplets((1,2,3), (3,2,1))
+print(ct)
