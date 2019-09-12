@@ -27,13 +27,13 @@ def compareTriplets(a, b):
         if p_a.scores[index] > p_b.scores[index]:
             return Score(1, 0)
         if p_a.scores[index] == p_b.scores[index]:
-            return Score()
+            return Score(0, 0)
         else:
             return Score(0, 1)
 
     def sum_scores(score_list):
         if not score_list:
-            return Score()
+            return Score(0, 0)
         else:
             return score_list.pop() + sum_scores(score_list)
 
